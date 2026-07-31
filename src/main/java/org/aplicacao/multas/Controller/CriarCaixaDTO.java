@@ -1,5 +1,5 @@
 package org.aplicacao.multas.Controller;
 
 
-public record CriarCaixaDTO(Integer id , String nome) {
+public record CriarCaixaDTO( String nome) {
 }

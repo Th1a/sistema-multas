@@ -37,7 +37,7 @@ public class MultasController {
    @GetMapping("/{identificador}")
    public ResponseEntity<ProcessoMulta> buscarProcessoMulta(@PathVariable ("identificador") String identificador){
 
-        var buscarMulta = multasRepository.findByIdentificador(identificador.toString());
+        var buscarMulta = multasRepository.findByIdentificador(identificador);
 
         if(buscarMulta.isPresent()){
             return ResponseEntity.ok(buscarMulta.get());

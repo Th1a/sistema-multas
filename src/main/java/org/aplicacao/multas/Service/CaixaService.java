@@ -27,7 +27,7 @@ public class CaixaService {
             throw  new RuntimeException("Caixa invalida");
         }
         var entity = new Caixa();
-        entity.setId(caixadto.id());
+
         entity.setNome(caixadto.nome());
 
         var caixa = caixaRepository.save(entity);
@@ -49,7 +49,10 @@ public class CaixaService {
     }
 
     public Optional <Caixa> findByNome(String nome) {
-        return  caixaRepository.findByNome(nome);
+
+
+
+        return  caixaRepository.findByNome(nome.trim().replaceAll(" ", " "));
     }
 
     public List<Caixa> listarCaixas() {

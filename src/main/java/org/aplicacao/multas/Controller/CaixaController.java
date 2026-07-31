@@ -41,11 +41,22 @@ public class CaixaController {
 
 @DeleteMapping("/{nome}")
     public ResponseEntity<?> deletarCaixa (@PathVariable ("nome") String nome) {
-
-    caixaService.excluirCaixa(nome);
+    caixaService.excluirCaixa(nome.trim().replaceAll(" ",""));
     return ResponseEntity.noContent().build();
 }
+    @GetMapping("/{nome}")
+    public ResponseEntity<Caixa>buscarCaixaPeloNome (@PathVariable ("nome") String nome){
 
+        var buscarCaixa = caixaRepository.findByNome(nome);
+
+        if (buscarCaixa.isPresent()){
+
+            return ResponseEntity.ok(buscarCaixa.get());
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 }
