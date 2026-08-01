@@ -13,10 +13,11 @@ public class CorsConfing {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                WebMvcConfigurer.super.addCorsMappings(registry);
+     ;
 
                 registry.addMapping("/**")
-                        .allowedOrigins("http://127.0.0.1:5500")
+                        .allowedOrigins("http://127.0.0.1:5500",
+                        "https://gerenciador-de-multas.netlify.app")
                         .allowedMethods("GET" ,"POST" , "PUT" ,"DELETE" , "PATCH" ,"OPTIONS")
                         .allowedHeaders("*");
 
